@@ -6,7 +6,8 @@ function UserAPI(token) {
     const [isAdmin, setIsAdmin] = useState(false)
     const [cart, setCart] = useState([])
     const [history, setHistory] = useState([])
-    // kiểm tra user đăng nhập có phải là user thông thường hay là admin 
+    const [productId, setProductId] = useState("")
+    const [user_id, setUser_id] = useState("")
     useEffect(()=>{
         if(token){
             const getUser = async () =>{
@@ -17,13 +18,14 @@ function UserAPI(token) {
                     setIsLogged(true)
                     res.data.role === 1? setIsAdmin(true) : setIsAdmin(false)
                     setCart(res.data.cart)
+                    setUser_id(res.data._id)
                 } catch (err) {
                     alert(err.response.data.msg)
                 }
             }
             getUser()
         }
-    },[token])
+    },[token,user_id])
     // xét các trường hợp để thêm sản phẩm và giỏ hàng
     const addCart = async(product) =>{
         if(!isLogged) return alert("Please sign in to buy products")
@@ -34,22 +36,33 @@ function UserAPI(token) {
 
         if(check){
             setCart([...cart,{...product, quantity:1}])
-
             await axios.patch('/user/addCart', {cart:[...cart, {...product, quantity:1}]}, {
                 headers: {Authorization: token}
             })
         }else{
-            alert("The product has been added to cart")
+            alert("The product has been added to cart")  
         }
 
     }
-
+    const click = async (product)=>{
+        if(!isLogged) return alert("Please sign in to buy products")
+        setProductId(product._id)
+        if(productId !==''){
+            await axios.post('/api/tracking',{id_user: user_id,id_product:productId},{
+                headers: {Authorization: token}
+            })
+        }
+    }
+    //console.log(productId)
     return {
         isLogged: [isLogged, setIsLogged], 
         isAdmin: [isAdmin, setIsAdmin],
         cart:  [cart, setCart],
         addCart: addCart,
-        history: [history,setHistory]
+        click: click,
+        history: [history,setHistory],
+        productId: [productId, setProductId],
+        user_id: [user_id, setUser_id]
     }
 }
 

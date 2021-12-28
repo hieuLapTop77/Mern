@@ -14,13 +14,10 @@ router.get('/logout', UserController.logout)
 
 router.get('/infor',Auth, UserController.getUser)
 
-router.patch('/addcart', Auth, UserController.addCart)
+router.patch('/addCart', Auth, UserController.addCart)
 
 router.get('/history', Auth, UserController.history)
 
 router.get('/get_user', Auth, AuthAdmin, UserController.getAllUser)
-
-
-
 
 module.exports = router;

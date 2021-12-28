@@ -88,7 +88,7 @@ function Filters() {
                   {'id':9, 'value':'Pink'},
                   {'id':10, 'value':'Shiny Black'},
                   {'id':11, 'value':'Mint Green'},
-                  {'id':11, 'value':'Turquoise'}]
+                  {'id':12, 'value':'Turquoise'}]
     return (
         <>
         <div className ='search'>

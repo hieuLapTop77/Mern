@@ -6,8 +6,7 @@ function BtnRender({product, deleteProduct}) {
     const state = useContext(GlobalState)
     const [isAdmin] = state.userAPI.isAdmin
     const addCart = state.userAPI.addCart
-
-    
+    const click = state.userAPI.click
     return (
         <div className="row_btn">
             {
@@ -22,13 +21,14 @@ function BtnRender({product, deleteProduct}) {
                     </Link>
                 </>
                 : <>
-                    <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
+                    <Link id="btn_buy" to="#!"
+                     onClick={() => {addCart(product); click(product)}}>
                         Add To Cart
                     </Link>
                     {/* <Link id="btn_view" to={`/detail/${product._id}`}>
                         Mua ngay
                     </Link> */}
-                    <Link id="btn_view" to="/cart" onClick={() => addCart(product)}>
+                    <Link id="btn_view" to="/cart" onClick={() => {addCart(product); click(product)}}>
                         Buy Now
                     </Link>
                 </>

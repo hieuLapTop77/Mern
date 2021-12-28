@@ -131,7 +131,16 @@ const userControl = {
     } catch (err) {
       return res.status(500).json({msg:err.message})
     }
-  }
+  },
+  // productId: async(req,res) =>{
+  //   const key = "1"
+  //   const value = req.body ? req.body._id:'';
+  //   //const id = body._id;
+  //   //console.log(body._id);
+
+    
+  //   return res.status(200).json({message: 'OK'});
+  // }
 };
 
 // create a access token for new user or sign token for new user

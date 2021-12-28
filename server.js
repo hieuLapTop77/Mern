@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const path = require('path')
-
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
@@ -16,8 +18,9 @@ app.use(fileUpload({ useTempFiles: true }));
 app.use('/user',require('./routers/UserRouter'))
 app.use('/api',require('./routers/CategoryRouters'))
 app.use('/api',require('./routers/Upload'))
+app.use('/api',require('./routers/TrackingRouter'))
 app.use('/api',require('./routers/ProductRouter'))
-app.use('/api',require('./routers/PaymentRouter'))
+app.use('/api',require('./routers/PaymentRouter')) 
 // connect to mongoose
 
 const URI = process.env.MONGODB_URL

@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Link } from 'react-router-dom'
 import BtnRender from './BtnRender'
+import {GlobalState} from '../../../../GlobalState'
 function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
+    const state = useContext(GlobalState)
+    const click = state.userAPI.click
     return (
         <div className="product_card">
             {
@@ -10,8 +13,9 @@ function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
             }
             <div>
                 
-                <Link id ="title" to ={`/detail/${product._id}`}>
+                <Link id ="title" to ={`/detail/${product._id}`} onClick={() => click(product)}>
                     <img src={product.images.url} alt="" />
+
                 </Link>
             </div>
             

@@ -130,7 +130,7 @@ function CreateProducts() {
                   {'id':9, 'value':'Pink'},
                   {'id':10, 'value':'Shiny Black'},
                   {'id':11, 'value':'Mint Green'},
-                  {'id':11, 'value':'Turquoise'}]
+                  {'id':12, 'value':'Turquoise'}]
 
     const camera = [{"id":1,"name":'Close-up (Macro)'}, 
                     {"id":2,"name":'Wide angle shooting'},
