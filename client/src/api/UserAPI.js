@@ -48,7 +48,7 @@ function UserAPI(token) {
         if(!isLogged) return alert("Please sign in to buy products")
         setProductId(product._id)
         if(productId !==''){
-            await axios.post('/api/tracking',{id_user: user_id,id_product:productId},{
+            await axios.post('/api/tracking',{id_user: user_id,id_product:product._id},{
                 headers: {Authorization: token}
             })
         }

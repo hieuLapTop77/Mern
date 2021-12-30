@@ -32,7 +32,7 @@ const TrackingControl = {
 
               try {
                   await producer.send({
-                      topic: 'test-topic',
+                      topic: 'clickcount',
                       messages: [
                         {value: id_product},
                       ],
