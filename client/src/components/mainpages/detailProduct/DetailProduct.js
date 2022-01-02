@@ -7,18 +7,21 @@ function DetailProduct() {
     const state = useContext(GlobalState)
     const [products] = state.productsAPI.products
     const addCart = state.userAPI.addCart
-    const click = state.userAPI.click
+    const click = state.userAPI.click    
     const [detailProduct, setDetailProduct] = useState([])
+    const [listSP] = state.similaritiesAPI.list
+    //const [recommend, setRecommend] = useState([])
     useEffect(()=>{
         if(params.id){
             products.forEach(product=>{
                 if(product._id === params.id) setDetailProduct(product)
-            })
+            })   
         }
     },[params.id,products])
 
     if(detailProduct.length === 0) return null
-
+    //const recommend = products.filter(product =>listSP.some(item =>product._id === item))
+    //console.log(recommend)
     return (
          /* Xem chi tiết sản phẩm và thêm những sản phẩm tương tự theo category */
         <>
@@ -49,7 +52,7 @@ function DetailProduct() {
             <div className='products'>
                 {
                     products.map(product =>{
-                        return product.category=== detailProduct.category ? 
+                        return (listSP.some(list=>list === product._id)) ? 
                         <ProductItem key = {product._id} product={product}/>:null
                     })
                 }

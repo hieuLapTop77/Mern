@@ -19,6 +19,7 @@ app.use('/user',require('./routers/UserRouter'))
 app.use('/api',require('./routers/CategoryRouters'))
 app.use('/api',require('./routers/Upload'))
 app.use('/api',require('./routers/TrackingRouter'))
+app.use('/api',require('./routers/SimilarityRouter'))
 app.use('/api',require('./routers/ProductRouter'))
 app.use('/api',require('./routers/PaymentRouter')) 
 // connect to mongoose

@@ -20,35 +20,36 @@ const TrackingControl = {
             res.json({msg: "Save success"})
 
             // kafka
-            const kafka = new Kafka({
-                clientId: 'my-app',
-                brokers: ['localhost:9092']
-              })
-              const producer = kafka.producer()
-              const producerMessage = async()=>{
-              
-              
-              console.log(id_product)
-
-              try {
-                  await producer.send({
-                      topic: 'clickcount',
-                      messages: [
-                        {value: id_product},
-                      ],
-                      timestamp: Date.now(),
-                    })       
-                  } catch (error) {
-                  console.log(error)
-                }
-              }
-              const run = async () => {
-            // Producing
-              await producer.connect()
-              producerMessage()
-            }
             
-            run().catch(console.error)
+            // const kafka = new Kafka({
+            //     clientId: 'my-app',
+            //     brokers: ['localhost:9092']
+            //   })
+            //   const producer = kafka.producer()
+            //   const producerMessage = async()=>{
+              
+              
+            //   console.log(id_product)
+
+            //   try {
+            //       await producer.send({
+            //           topic: 'clickcount',
+            //           messages: [
+            //             {value: id_product},
+            //           ],
+            //           timestamp: Date.now(),
+            //         })       
+            //       } catch (error) {
+            //       console.log(error)
+            //     }
+            //   }
+            //   const run = async () => {
+            // // Producing
+            //   await producer.connect()
+            //   producerMessage()
+            // }
+            
+            // run().catch(console.error)
         } catch (err) {
             return res.status(500).json({msg:err.message})
         }

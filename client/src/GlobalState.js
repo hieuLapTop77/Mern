@@ -3,6 +3,7 @@ import ProductsAPI from "./api/ProductsAPI";
 import axios from 'axios';
 import UserAPI from "./api/UserAPI";
 import CategoriesAPI from "./api/CategoriesAPI";
+import SimilarityAPI from "./api/SimilarityAPI";
 export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
@@ -29,7 +30,8 @@ export const DataProvider = ({ children }) => {
     token: [token, setToken],
     productsAPI: ProductsAPI(),
     userAPI: UserAPI(token),
-    categoriesAPI: CategoriesAPI()
+    categoriesAPI: CategoriesAPI(), 
+    similaritiesAPI: SimilarityAPI(),
   };
   return (
     <GlobalState.Provider value={state}>
