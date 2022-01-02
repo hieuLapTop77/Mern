@@ -11,6 +11,7 @@ function DetailProduct() {
     const click = state.userAPI.click    
     const [detailProduct, setDetailProduct] = useState([])
     const [listSP] = state.similaritiesAPI.list
+    console.log(listSP)
     //const [recommend, setRecommend] = useState([])
     useEffect(()=>{
         if(params.id){
@@ -26,7 +27,6 @@ function DetailProduct() {
     return (
          /* Xem chi tiết sản phẩm và thêm những sản phẩm tương tự theo category */
         <>
-        <Delayed>
         <div className="detail">
             <img src = {detailProduct.images.url} alt=""/>
             <div className = "box-detail">
@@ -49,10 +49,15 @@ function DetailProduct() {
             </div>
         </div>
 
+        <Delayed>
         <div>
             <h2>Related Products</h2>
             <div className='products'>
                 {
+                    // products.map(product =>{
+                    //     return (listSP.some(list=>list === product._id)) ? 
+                    //     <ProductItem key = {product._id} product={product}/>:null
+                    // })
                     products.map(product =>{
                         return (listSP.some(list=>list === product._id)) ? 
                         <ProductItem key = {product._id} product={product}/>:null

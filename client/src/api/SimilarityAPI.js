@@ -14,6 +14,12 @@ function SimilarityAPI() {
     },[similarities])
 
     const getListProducts = async(id) =>{
+        function sleep(ms) {
+            return new Promise((resolve) => {
+              setTimeout(resolve, ms);
+            });
+        }
+        await sleep(2000)
         const res = await axios.get(`/api/detail/${id}`)
         //console.log(res)
         if(res.data !== null){
@@ -27,5 +33,4 @@ function SimilarityAPI() {
         list: [list, setList]
     }
 }
-
 export default SimilarityAPI
