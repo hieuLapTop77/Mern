@@ -2,6 +2,7 @@ import React,{useContext, useState, useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import {GlobalState} from '../../../GlobalState'
 import ProductItem from '../utils/ProductItem/ProductItem'
+import Delayed from '../utils/Loading/Delay'
 function DetailProduct() {
     const params = useParams()
     const state = useContext(GlobalState)
@@ -25,6 +26,7 @@ function DetailProduct() {
     return (
          /* Xem chi tiết sản phẩm và thêm những sản phẩm tương tự theo category */
         <>
+        <Delayed>
         <div className="detail">
             <img src = {detailProduct.images.url} alt=""/>
             <div className = "box-detail">
@@ -58,6 +60,7 @@ function DetailProduct() {
                 }
             </div>
         </div>
+        </Delayed>
         </>
        
     )

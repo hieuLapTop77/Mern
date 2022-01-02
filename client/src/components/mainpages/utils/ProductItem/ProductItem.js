@@ -1,4 +1,4 @@
-import React,{useContext, useState,useEffect} from 'react'
+import React,{useContext} from 'react'
 import { Link } from 'react-router-dom'
 import BtnRender from './BtnRender'
 import {GlobalState} from '../../../../GlobalState'
@@ -6,14 +6,14 @@ function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
     const state = useContext(GlobalState)
     const click = state.userAPI.click
     const getListProducts = state.similaritiesAPI.getListProducts
-    const [show,setShow] = useState(false)
-    useEffect(() =>{
-        const timeout = setTimeout(() => {
-            setShow(true)
-        }, 5000)
+    //const [show,setShow] = useState(false)
+    // useEffect(() =>{
+    //     const timeout = setTimeout(() => {
+    //         setShow(true)
+    //     }, 5000)
 
-        return () => clearTimeout(timeout)
-    },[show])
+    //     return () => clearTimeout(timeout)
+    // },[show])
 
     return (
         <div className="product_card">
@@ -24,7 +24,6 @@ function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
             <div>
                 <Link id ="title" to ={`/detail/${product._id}`} onClick={() =>{click(product);getListProducts(product._id)}}>
                     <img src={product.images.url} alt="" />
-
                 </Link>
             </div>
             
